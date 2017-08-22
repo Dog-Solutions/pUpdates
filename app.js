@@ -9,7 +9,16 @@ var dogList = document.getElementById( 'dogList' );
 var dogForm = document.getElementById( 'dog-form' );
 var savedData = localStorage.getItem( 'name' );
 var postHolder = [];
+var savedFeed = localStorage.getItem('postHolder');
 
+if ( savedFeed )  {
+
+postHolder = JSON.parse(localStorage.getItem( 'postHolder' ));
+postHolder[0].postToDOM();
+// // for (var i = 0; i < postHolder.length; i++) {
+//     postHolder[i].postToDOM();
+//   }
+}
         
 if ( !savedData ) {             // looks for LS data
     dogForm.addEventListener( 'submit', submitDog );
@@ -32,6 +41,7 @@ if ( !savedData ) {             // looks for LS data
 
         
 } else {                //parses existing LS data
+    updateForm.addEventListener ( 'submit', submitPost );
     var localName = JSON.parse ( localStorage.getItem ( 'name' ));
 
     var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
@@ -65,7 +75,7 @@ if ( !savedData ) {             // looks for LS data
 
                     // POST CONSTRUCTOR
 
-updateForm.addEventListener ( 'submit', submitPost );
+
 
 function Post ( text, poop, pee, food, walk, other ) {
     this.text = text;
@@ -76,11 +86,18 @@ function Post ( text, poop, pee, food, walk, other ) {
     // this.other = other;
 }               
 
-function submitPost () {
-    event.preventDefault();
+function submitPost() {
+    // event.preventDefault();
     var elText = this.text.value;
     var newPost = new Post(elText);
     postHolder.push(newPost);
     console.log(postHolder);
-
+    savedFeed = JSON.stringify(postHolder);
+    localStorage.setItem('postHolder', savedFeed);
+}
+Post.prototype.postToDOM = function () { 
+    var feedBoard = document.getElementById ('feed-holder');
+    var postItem = document.createElement ('p');
+    postItem.innerText = this.text;
+    feedBoard.appendChild(postItem);
 }
