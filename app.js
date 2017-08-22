@@ -8,6 +8,7 @@ var updateList;
 var dogList = document.getElementById( 'dogList' );
 var dogForm = document.getElementById( 'dog-form' );
 var savedData = localStorage.getItem( 'name' );
+var postHolder = [];
 
         
 if ( !savedData ) {             // looks for LS data
@@ -68,13 +69,18 @@ updateForm.addEventListener ( 'submit', submitPost );
 
 function Post ( text, poop, pee, food, walk, other ) {
     this.text = text;
-    this.poop = poop;
-    this.pee = pee;
-    this.food = food;
-    this.walk = walk;
-    this.other = other;
+    // this.poop = poop;
+    // this.pee = pee;
+    // this.food = food;
+    // this.walk = walk;
+    // this.other = other;
 }               
 
 function submitPost () {
+    event.preventDefault();
     var elText = this.text.value;
+    var newPost = new Post(elText);
+    postHolder.push(newPost);
+    console.log(postHolder);
+
 }
