@@ -14,10 +14,9 @@ var savedFeed = localStorage.getItem('postHolder');
 if ( savedFeed )  {
 
 postHolder = JSON.parse(localStorage.getItem( 'postHolder' ));
-postHolder[0].postToDOM();
-// // for (var i = 0; i < postHolder.length; i++) {
-//     postHolder[i].postToDOM();
-//   }
+for (var i = 0; i < postHolder.length; i++) {
+postToDOM(i);
+  }
 }
         
 if ( !savedData ) {             // looks for LS data
@@ -95,9 +94,11 @@ function submitPost() {
     savedFeed = JSON.stringify(postHolder);
     localStorage.setItem('postHolder', savedFeed);
 }
-Post.prototype.postToDOM = function () { 
+ function postToDOM() { 
     var feedBoard = document.getElementById ('feed-holder');
     var postItem = document.createElement ('p');
-    postItem.innerText = this.text;
+    console.log(feedBoard + postItem)
+    postItem.innerText = postHolder[i].text;
     feedBoard.appendChild(postItem);
+   
 }
