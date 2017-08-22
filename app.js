@@ -8,7 +8,16 @@ var updateList;
 var dogList = document.getElementById( 'dogList' );
 var dogForm = document.getElementById( 'dog-form' );
 var savedData = localStorage.getItem( 'name' );
+var postHolder = [];
+var savedFeed = localStorage.getItem('postHolder');
 
+if ( savedFeed )  {
+
+postHolder = JSON.parse(localStorage.getItem( 'postHolder' ));
+for (var i = 0; i < postHolder.length; i++) {
+postToDOM(i);
+  }
+}
         
 if ( !savedData ) {             // looks for LS data
     dogForm.addEventListener( 'submit', submitDog );
@@ -31,6 +40,7 @@ if ( !savedData ) {             // looks for LS data
 
         
 } else {                //parses existing LS data
+    updateForm.addEventListener ( 'submit', submitPost );
     var localName = JSON.parse ( localStorage.getItem ( 'name' ));
 
     var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
@@ -64,17 +74,31 @@ if ( !savedData ) {             // looks for LS data
 
                     // POST CONSTRUCTOR
 
-updateForm.addEventListener ( 'submit', submitPost );
+
 
 function Post ( text, poop, pee, food, walk, other ) {
     this.text = text;
-    this.poop = poop;
-    this.pee = pee;
-    this.food = food;
-    this.walk = walk;
-    this.other = other;
+    // this.poop = poop;
+    // this.pee = pee;
+    // this.food = food;
+    // this.walk = walk;
+    // this.other = other;
 }               
 
-function submitPost () {
+function submitPost() {
+    // event.preventDefault();
     var elText = this.text.value;
+    var newPost = new Post(elText);
+    postHolder.push(newPost);
+    console.log(postHolder);
+    savedFeed = JSON.stringify(postHolder);
+    localStorage.setItem('postHolder', savedFeed);
+}
+ function postToDOM() { 
+    var feedBoard = document.getElementById ('feed-holder');
+    var postItem = document.createElement ('p');
+    console.log(feedBoard + postItem)
+    postItem.innerText = postHolder[i].text;
+    feedBoard.appendChild(postItem);
+   
 }
