@@ -74,8 +74,6 @@ if ( !savedData ) {             // looks for LS data
 
                     // POST CONSTRUCTOR
 
-
-
 function Post ( text, poop, pee, food, walk, other ) {
     this.text = text;
     this.poop = poop;
@@ -100,11 +98,43 @@ function submitPost() {
     savedFeed = JSON.stringify(postHolder);
     localStorage.setItem('postHolder', savedFeed);
 }
+
+
  function postToDOM() { 
     var feedBoard = document.getElementById ('feed-holder');
+    var postBox = document.createElement( 'div')
+    //postBox.setAttribute("id", 'genericID');
+    feedBoard.appendChild( postBox );
     var postItem = document.createElement ('p');
+
     console.log(feedBoard + postItem)
     postItem.innerText = postHolder[i].text;
-    feedBoard.appendChild(postItem);
+    postBox.appendChild(postItem);
+
+    if ( postHolder[i].poop ) {
+        var pooped = document.createElement( 'p' );
+        pooped.innerText = 'pooped'; 
+        postBox.appendChild( pooped );
+    }
    
+    if ( postHolder[i].pee ) {
+        var peed = document.createElement( 'p' );
+        peed.innerText = 'peed'; 
+        postBox.appendChild( peed );
+    }
+    if ( postHolder[i].food ) {
+        var fed = document.createElement( 'p' );
+        fed.innerText = 'fed'; 
+        postBox.appendChild( fed );
+    }
+    if ( postHolder[i].walk ) {
+        var walked = document.createElement( 'p' );
+        walked.innerText = 'walked'; 
+        postBox.appendChild( walked );
+    }
+    if ( postHolder[i].other ) {
+        var othered = document.createElement( 'p' );
+        othered.innerText = 'othered'; 
+        postBox.appendChild( othered );
+    }
 }
