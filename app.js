@@ -10,6 +10,7 @@ var dogForm = document.getElementById( 'dog-form' );
 var savedData = localStorage.getItem( 'name' );
 var postHolder = [];
 var savedFeed = localStorage.getItem('postHolder');
+var aDate = new Date();
 
 if ( savedFeed )  {
 
@@ -41,6 +42,7 @@ if ( !savedData ) {             // looks for LS data
         
 } else {                //parses existing LS data
     updateForm.addEventListener ( 'submit', submitPost );
+    
     var localName = JSON.parse ( localStorage.getItem ( 'name' ));
 
     var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
@@ -74,13 +76,14 @@ if ( !savedData ) {             // looks for LS data
 
                     // POST CONSTRUCTOR
 
-function Post ( text, poop, pee, food, walk, other ) {
+function Post ( text, poop, pee, food, walk, other, date ) {
     this.text = text;
     this.poop = poop;
     this.pee = pee;
     this.food = food;
     this.walk = walk;
     this.other = other;
+    this.date = date;
 }               
 
 function submitPost() {
@@ -91,12 +94,15 @@ function submitPost() {
     var elFood = document.getElementById('food').checked;
     var elWalk = document.getElementById('walk').checked;
     var elOther = document.getElementById('other').checked;
+    var elDate = aDate.toTimeString();
 
     var newPost = new Post(elText, elPoop, elPee, elFood, elWalk, elOther);
     postHolder.push(newPost);
     console.log(postHolder);
     savedFeed = JSON.stringify(postHolder);
     localStorage.setItem('postHolder', savedFeed);
+
+
 }
 
 
