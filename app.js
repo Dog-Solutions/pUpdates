@@ -78,17 +78,23 @@ if ( !savedData ) {             // looks for LS data
 
 function Post ( text, poop, pee, food, walk, other ) {
     this.text = text;
-    // this.poop = poop;
-    // this.pee = pee;
-    // this.food = food;
-    // this.walk = walk;
-    // this.other = other;
+    this.poop = poop;
+    this.pee = pee;
+    this.food = food;
+    this.walk = walk;
+    this.other = other;
 }               
 
 function submitPost() {
     // event.preventDefault();
     var elText = this.text.value;
-    var newPost = new Post(elText);
+    var elPoop = document.getElementById('poop').checked;
+    var elPee = document.getElementById('pee').checked;
+    var elFood = document.getElementById('food').checked;
+    var elWalk = document.getElementById('walk').checked;
+    var elOther = document.getElementById('other').checked;
+
+    var newPost = new Post(elText, elPoop, elPee, elFood, elWalk, elOther);
     postHolder.push(newPost);
     console.log(postHolder);
     savedFeed = JSON.stringify(postHolder);
