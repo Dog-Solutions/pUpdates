@@ -94,7 +94,7 @@ function submitPost() {
     var elFood = document.getElementById('food').checked;
     var elWalk = document.getElementById('walk').checked;
     var elOther = document.getElementById('other').checked;
-    var elDate = aDate.toTimeString();
+    //var elDate = aDate.toTimeString();
 
     var newPost = new Post(elText, elPoop, elPee, elFood, elWalk, elOther);
     postHolder.push(newPost);
@@ -119,7 +119,8 @@ function submitPost() {
 
     if ( postHolder[i].poop ) {
         var pooped = document.createElement( 'p' );
-        pooped.innerText = 'pooped'; 
+        pooped.innerText = 'poop';
+        //pooped.src = "images/poop.png";
         postBox.appendChild( pooped );
     }
    
