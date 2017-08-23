@@ -1,0 +1,76 @@
+body {
+    border: 1px solid black;
+}
+
+#profile {
+    border: 1px solid black;
+}
+
+#update {
+    border:1px solid black;
+    display: flex;
+    justify-content: flex-start;
+}
+
+form {
+    text-align: center;
+    width: 75%;
+    background-color: beige;
+    margin: 20px;
+    border-radius: 10px;
+    
+}
+
+#dog-form {
+    width: 200px;
+    height: auto;
+    height: 556px;
+    background-image: url("sandpaw.jpeg");
+    background-repeat: no-repeat;
+    background-position-y: 210px;
+}
+
+p {
+    
+    margin: 10px;
+    padding:0;
+    text-align: right;
+    font-size: 14px;
+}
+
+#text-input{
+    
+    margin: 10px;
+    padding:0;
+    text-align: left;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+div {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+img {
+    margin: 10px;
+}
+
+.post-div {
+    background-color: #8484BD;
+    border: 2px solid navy;
+    border-radius: 10px;
+    margin: 20px;
+    width: 75%;
+    padding: 0px 15px 15px 15px;
+}
+    
+#add-new-user {
+    width: 30%;
+    
+}
+
+#form-update {
+    width: 70%;
+}
+

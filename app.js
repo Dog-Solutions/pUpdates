@@ -3,6 +3,9 @@
 var dogName;
 var dogBreed;
 var dogWeight;
+var dogOwner = [];
+var submitNewUser = document.getElementById ( 'add-new-user' );
+var userSelector = document.getElementById ( 'caretakers' );
 var updateForm = document.getElementById ('form-update' );
 var updateList;
 var dogList = document.getElementById( 'dogList' );
@@ -37,24 +40,28 @@ if ( !savedData ) {             // looks for LS data
         dogWeight = this.weight.value;
         var dogWeightString = JSON.stringify ( dogWeight );
         localStorage.setItem ( 'weight', dogWeightString );
-        
+
+        dogOwner.push (this.owner.value);
+        var dogOwnerString = JSON.stringify ( dogOwner );
+        localStorage.setItem ( 'owner', dogOwnerString );
     }
 
         
 } else {                //parses existing LS data
+    submitNewUser.addEventListener ( 'submit', submitUser );
     updateForm.addEventListener ( 'submit', submitPost );
     
     var localName = JSON.parse ( localStorage.getItem ( 'name' ));
-
     var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
-
     var localWeight = JSON.parse ( localStorage.getItem ( 'weight' ));
+    var localOwner = JSON.parse ( localStorage.getItem ( 'owner' ));
 
                 //creates dog constructor 
-    function Dog (name, breed, weight) {
+    function Dog (name, breed, weight, owner) {
         this.name = name;
         this.breed = breed;
         this.weight = weight;
+        this.owner = owner;
         this.renderToDOM();
     }
                 // TODO ------- make a loop
@@ -71,34 +78,51 @@ if ( !savedData ) {             // looks for LS data
         var weightCont = document.createElement ( 'li' );
         weightCont.innerText = this.weight;
         dogList.appendChild ( weightCont );
+
+        var ownerCont = document.createElement ( 'li' );
+        ownerCont.innerText = this.owner[0];
+        dogList.appendChild ( ownerCont );
+
+        for ( var i = 0; i < this.owner.length; i++ ) {
+            var careTaker = document.createElement ( 'option' );
+            careTaker.innerText = this.owner[i];
+            userSelector.appendChild ( careTaker );
+        }
     }
-    var mainDog = new Dog ( localName, localBreed, localWeight );
+    var mainDog = new Dog ( localName, localBreed, localWeight, localOwner );
 }
 
                     // POST CONSTRUCTOR
 
-function Post ( text, poop, pee, food, walk, other, date ) {
+function Post ( text, poop, pee, food, walk, other, nowUser ) {
     this.text = text;
     this.poop = poop;
     this.pee = pee;
     this.food = food;
     this.walk = walk;
     this.other = other;
+    this.nowUser = nowUser;
     this.date = moment().format('MMM Do, h:mm a');
 
 }               
 
+function submitUser() {
+    var newUser = JSON.parse ( localStorage.getItem ( 'owner' ));
+    newUser.push ( this.user.value );
+    var newUserString = JSON.stringify ( newUser );
+    localStorage.setItem ( 'owner', newUserString );
+}
+
 function submitPost() {
-    // event.preventDefault();
+    var elCaretaker = userSelector.options [userSelector.selectedIndex].text;
     var elText = this.text.value;
     var elPoop = document.getElementById('poop').checked;
     var elPee = document.getElementById('pee').checked;
     var elFood = document.getElementById('food').checked;
     var elWalk = document.getElementById('walk').checked;
     var elOther = document.getElementById('other').checked;
-    //var elDate = aDate.toTimeString();
 
-    var newPost = new Post(elText, elPoop, elPee, elFood, elWalk, elOther);
+    var newPost = new Post( elText, elPoop, elPee, elFood, elWalk, elOther, elCaretaker );
     postHolder.push(newPost);
     console.log(postHolder);
     savedFeed = JSON.stringify(postHolder);
@@ -110,39 +134,44 @@ function postToDOM() {
     var postBox = document.createElement( 'div')
     //postBox.setAttribute("id", 'genericID');
     feedBoard.appendChild( postBox );
-    var postItem = document.createElement ('div');
+    var postItem = document.createElement ('p');
+    postBox.setAttribute( 'class', 'post-div')
 
-    console.log(feedBoard + postItem)
-    postItem.innerText = postHolder[i].text;
-    postBox.appendChild(postItem);
+    var signature = document.createElement ( 'p' );
+    signature.innerText = postHolder[i].nowUser;
+    signature.setAttribute ( 'id', 'signature' );
+    postBox.appendChild (signature);
+    
 
     if ( postHolder[i].poop ) {
-        var pooped = document.createElement( 'p' );
-        pooped.innerText = 'poop';
-        //pooped.src = "images/poop.png";
+        var pooped = document.createElement( 'img' );
+        pooped.setAttribute( 'src', "images/poop.png");
         postBox.appendChild( pooped );
     }
    
     if ( postHolder[i].pee ) {
-        var peed = document.createElement( 'p' );
-        peed.innerText = 'peed'; 
+        var peed = document.createElement( 'img' );
+        peed.setAttribute( 'src', "images/peey.png");
         postBox.appendChild( peed );
     }
     if ( postHolder[i].food ) {
-        var fed = document.createElement( 'p' );
-        fed.innerText = 'fed'; 
+        var fed = document.createElement( 'img' );
+        fed.setAttribute( 'src', "images/bowl.png");
         postBox.appendChild( fed );
     }
     if ( postHolder[i].walk ) {
-        var walked = document.createElement( 'p' );
-        walked.innerText = 'walked'; 
+        var walked = document.createElement( 'img' );
+        walked.setAttribute( 'src', 'images/walk.png');
         postBox.appendChild( walked );
     }
     if ( postHolder[i].other ) {
-        var othered = document.createElement( 'p' );
-        othered.innerText = 'othered'; 
+        var othered = document.createElement( 'img' );
+        othered.setAttribute( 'src', 'images/hazard-photo.png'); 
         postBox.appendChild( othered );
     }
+    postItem.innerText = postHolder[i].text;
+    postItem.setAttribute ( 'id', 'text-input');
+    postBox.appendChild(postItem);
     var dateTime = postHolder[i].date;
     var dateDisplay = document.createElement( 'p' );
     dateDisplay.innerText = dateTime;
