@@ -1,4 +1,18 @@
 body {
+    background-color: #B9B9FF;
+    background-image: url("sandpaw.jpeg");
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position-y: 200px;
+}
+
+header {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    background: beige;
+}
+
+body {
     border: 1px solid black;
 }
 
@@ -8,4 +22,20 @@ body {
 
 #update {
     border:1px solid black;
+}
+
+form {
+    text-align: center;
+    width: 200px;
+    background-color: beige;
+    float: right;
+    height: 500px;
+    
+}
+
+#dog-form {
+    width: 200px;
+    height: auto;
+    height: 556px;
+
 }
