@@ -3,6 +3,7 @@
 var dogName;
 var dogBreed;
 var dogWeight;
+var dogPic;
 var updateForm = document.getElementById ('form-update' );
 var updateList;
 var dogList = document.getElementById( 'dogList' );
@@ -36,6 +37,10 @@ if ( !savedData ) {             // looks for LS data
         dogWeight = this.weight.value;
         var dogWeightString = JSON.stringify ( dogWeight );
         localStorage.setItem ( 'weight', dogWeightString );
+
+        dogPic = this.pic.value;
+        var dogPicString = JSON.stringify ( dogPic );
+        localStorage.setItem ( 'pic', dogPicString);
         
     }
 
@@ -49,11 +54,14 @@ if ( !savedData ) {             // looks for LS data
 
     var localWeight = JSON.parse ( localStorage.getItem ( 'weight' ));
 
+    var localPic = JSON.parse (localStorage.getItem ( 'pic' ));
+
                 //creates dog constructor 
-    function Dog (name, breed, weight) {
+    function Dog (name, breed, weight, pic) {
         this.name = name;
         this.breed = breed;
         this.weight = weight;
+        this.pic = pic;
         this.renderToDOM();
     }
                 // TODO ------- make a loop
@@ -70,6 +78,11 @@ if ( !savedData ) {             // looks for LS data
         var weightCont = document.createElement ( 'li' );
         weightCont.innerText = this.weight;
         dogList.appendChild ( weightCont );
+
+        var picCont = document.createElement ( 'img' );
+        picCont.setAttribute ("src", this.pic);
+        console.log(picCont);
+        dogList.appendChild( picCont );
     }
     var mainDog = new Dog ( localName, localBreed, localWeight );
 }
@@ -101,15 +114,12 @@ function submitPost() {
     console.log(postHolder);
     savedFeed = JSON.stringify(postHolder);
     localStorage.setItem('postHolder', savedFeed);
-
-
 }
 
 
  function postToDOM() { 
     var feedBoard = document.getElementById ('feed-holder');
     var postBox = document.createElement( 'div')
-    //postBox.setAttribute("id", 'genericID');
     feedBoard.appendChild( postBox );
     var postItem = document.createElement ('p');
 
@@ -119,7 +129,6 @@ function submitPost() {
 
     if ( postHolder[i].poop ) {
         var pooped = document.createElement( 'img' );
-        //pooped.innerText = 'poop';
         pooped.setAttribute("src", "images/poop.png");
         postBox.appendChild( pooped );
     }
