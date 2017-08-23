@@ -15,7 +15,8 @@ var aDate = new Date();
 if ( savedFeed )  {
 
 postHolder = JSON.parse(localStorage.getItem( 'postHolder' ));
-for (var i = 0; i < postHolder.length; i++) {
+console.log(postHolder.length);
+for (var i = postHolder.length-1; i >= 0; i--) {
 postToDOM(i);
   }
 }
@@ -83,7 +84,8 @@ function Post ( text, poop, pee, food, walk, other, date ) {
     this.food = food;
     this.walk = walk;
     this.other = other;
-    this.date = date;
+    this.date = moment().format('MMM Do, h:mm a');
+
 }               
 
 function submitPost() {
@@ -101,17 +103,14 @@ function submitPost() {
     console.log(postHolder);
     savedFeed = JSON.stringify(postHolder);
     localStorage.setItem('postHolder', savedFeed);
-
-
 }
 
-
- function postToDOM() { 
+function postToDOM() { 
     var feedBoard = document.getElementById ('feed-holder');
     var postBox = document.createElement( 'div')
     //postBox.setAttribute("id", 'genericID');
     feedBoard.appendChild( postBox );
-    var postItem = document.createElement ('p');
+    var postItem = document.createElement ('div');
 
     console.log(feedBoard + postItem)
     postItem.innerText = postHolder[i].text;
@@ -144,4 +143,8 @@ function submitPost() {
         othered.innerText = 'othered'; 
         postBox.appendChild( othered );
     }
+    var dateTime = postHolder[i].date;
+    var dateDisplay = document.createElement( 'p' );
+    dateDisplay.innerText = dateTime;
+    postBox.appendChild( dateDisplay);
 }

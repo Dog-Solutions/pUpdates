@@ -1,10 +1,10 @@
-body {
+/* body {
     background-color: #B9B9FF;
     background-image: url("sandpaw.jpeg");
     background-repeat: no-repeat;
     background-size: 90%;
     background-position-y: 200px;
-}
+} */
 
 header {
     text-align: center;
@@ -24,7 +24,6 @@ body {
     border:1px solid black;
 }
 
-<<<<<<< HEAD
 form {
     text-align: center;
     width: 200px;
@@ -38,10 +37,19 @@ form {
     width: 200px;
     height: auto;
     height: 556px;
+}
 
-=======
+p {
+    background-color: lightcyan;
+    margin: 10px;
+    padding:0;
+    text-align: right;
+    font-size: 14px;
+}
+
 div {
     border: 1px solid black;
-    margin: 2em;
->>>>>>> 8a2178e22025d6d4a254028e0a0f64a831ffcb0d
+    font-size: 20px;
+    font-weight: bolder;
+    
 }
