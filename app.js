@@ -84,7 +84,7 @@ if ( !savedData ) {             // looks for LS data
         console.log(picCont);
         dogList.appendChild( picCont );
     }
-    var mainDog = new Dog ( localName, localBreed, localWeight );
+    var mainDog = new Dog ( localName, localBreed, localWeight, localPic );
 }
 
                     // POST CONSTRUCTOR
