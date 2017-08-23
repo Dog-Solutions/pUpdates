@@ -118,25 +118,25 @@ function submitPost() {
     postBox.appendChild(postItem);
 
     if ( postHolder[i].poop ) {
-        var pooped = document.createElement( 'p' );
-        pooped.innerText = 'poop';
-        //pooped.src = "images/poop.png";
+        var pooped = document.createElement( 'img' );
+        //pooped.innerText = 'poop';
+        pooped.setAttribute("src", "images/poop.png");
         postBox.appendChild( pooped );
     }
    
     if ( postHolder[i].pee ) {
-        var peed = document.createElement( 'p' );
-        peed.innerText = 'peed'; 
+        var peed = document.createElement( 'img' );
+        peed.setAttribute( "src", "images/pee.png" )
         postBox.appendChild( peed );
     }
     if ( postHolder[i].food ) {
-        var fed = document.createElement( 'p' );
-        fed.innerText = 'fed'; 
+        var fed = document.createElement( 'img' );
+        fed.setAttribute("src", "images/bowl.png")
         postBox.appendChild( fed );
     }
     if ( postHolder[i].walk ) {
-        var walked = document.createElement( 'p' );
-        walked.innerText = 'walked'; 
+        var walked = document.createElement( 'img' );
+        walked.setAttribute("src", "images/walk.png")
         postBox.appendChild( walked );
     }
     if ( postHolder[i].other ) {
