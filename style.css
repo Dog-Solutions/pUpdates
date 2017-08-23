@@ -24,6 +24,7 @@ body {
     border:1px solid black;
 }
 
+<<<<<<< HEAD
 form {
     text-align: center;
     width: 200px;
@@ -38,4 +39,9 @@ form {
     height: auto;
     height: 556px;
 
+=======
+div {
+    border: 1px solid black;
+    margin: 2em;
+>>>>>>> 8a2178e22025d6d4a254028e0a0f64a831ffcb0d
 }
