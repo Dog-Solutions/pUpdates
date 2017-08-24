@@ -79,11 +79,14 @@ if ( !savedData ) {             // looks for LS data
         weightCont.innerText = this.weight;
         dogList.appendChild ( weightCont );
 
+
         var picCont = document.createElement ( 'img' );
         picCont.setAttribute ("src", this.pic);
-        //var profileCont = document.getElementById('profile')
+        picCont.setAttribute ("style", "height:8em")
+        picCont.setAttribute ("id", "profile-pic")
+        var profileCont = document.getElementById('profile')
         console.log(picCont);
-        dogList.appendChild( picCont );
+        profileCont.appendChild( picCont );
     }
     var mainDog = new Dog ( localName, localBreed, localWeight, localPic );
 }
