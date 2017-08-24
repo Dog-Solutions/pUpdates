@@ -90,13 +90,6 @@ if ( !savedData ) {             // looks for LS data
         ownerCont.innerText = this.owner[0];
         dogList.appendChild ( ownerCont );
 
-        var picCont = document.createElement ( 'img' );
-        picCont.setAttribute ("src", this.pic);
-        picCont.setAttribute ("style", "height:8em")
-        picCont.setAttribute ("id", "profile-pic")
-        var profileCont = document.getElementById('profile')
-        console.log(picCont);
-        profileCont.appendChild( picCont );
 
         for ( var i = 0; i < this.owner.length; i++ ) {
             var careTaker = document.createElement ( 'option' );
@@ -105,6 +98,25 @@ if ( !savedData ) {             // looks for LS data
         }
     }
     var mainDog = new Dog ( localName, localBreed, localWeight, localOwner, localPic );
+
+    if ( mainDog.pic ) {
+        var picCont = document.createElement ( 'img' );
+        picCont.setAttribute ("src", mainDog.pic);
+        picCont.setAttribute ("style", "height:8em")
+        picCont.setAttribute ("id", "profile-pic")
+        var profileCont = document.getElementById('profile')
+        profileCont.appendChild( picCont );
+
+    }
+
+    else {
+        var picCont = document.createElement ( 'img' );
+        picCont.setAttribute ("src", "images/dachsund.jpg");
+        picCont.setAttribute ("style", "height:8em")
+        picCont.setAttribute ("id", "profile-pic")
+        var profileCont = document.getElementById('profile')
+        profileCont.appendChild( picCont );
+    }
 }
 
                     // POST CONSTRUCTOR
