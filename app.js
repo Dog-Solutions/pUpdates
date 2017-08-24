@@ -205,3 +205,12 @@ function postToDOM() {
     dateDisplay.innerText = dateTime;
     postBox.appendChild( dateDisplay);
 }
+
+var today = new Date();
+var year = today.getFullYear();
+var footsies = document.getElementById ( 'foot' );
+var footy = document.createElement ( 'p' );
+var copyRight = '&copy;';
+footy.innerText = '(<p>Copyright copyRight + year )';
+footsies.appendChild (footy);
+console.log( footsies );
