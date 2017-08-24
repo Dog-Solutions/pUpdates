@@ -12,23 +12,24 @@ header {
     background: beige;
     border-radius: 5px;
     max-height: 100px;
+    font-weight: bolder;
 
 }
 
 #update {
     display: flex;
-    justify-content: flex-start;
-    background: #B9B9FF;
+    justify-content: space-around;
+    align-items: center;
 }
 
-form {
+/* form {
     text-align: center;
     width: 75%;
     background-color: beige;
     margin: 20px;
     border-radius: 10px;
     
-}
+} */
 
 #dog-form {
     width: 200px;
@@ -62,7 +63,7 @@ img {
 }
 
 .post-div {
-    margin-left: 120px;
+    margin-left: auto;
     margin-right: auto;
     background-color: #8484BD;
     border: 2px solid navy;
@@ -70,16 +71,19 @@ img {
     margin: 20px;
     width: 75%;
     padding: 0px 15px 15px 15px;
+    font-weight: bolder;
 
 }
     
 #add-new-user {
-    width: 30%;
+    width: 100px;
     height: auto;
+    text-align: center;
 }
 
 #form-update {
     width: 70%;
+    font-weight: bolder;
 }
 
 ul {
@@ -94,5 +98,25 @@ li {
 
 #feed-holder {
     margin-left: auto;
+    margin-right: auto;
+}
+
+fieldset {
+    border-radius: 5px;
+    background-color: beige;
+}
+
+.caretakers {
+    float: right;
+    
+}
+
+#annoying {
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.right {
     margin-right: auto;
 }
