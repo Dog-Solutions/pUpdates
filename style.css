@@ -3,58 +3,41 @@ body {
     background-image: url("images/background-photo.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position-y: 200px;
+    background-position-y: 146px;
 }
 
 header {
     text-align: center;
     font-family: 'Permanent Marker', cursive;
     background: beige;
-}
+    border-radius: 5px;
 
-body {
-    border: 1px solid black;
-}
-
-#profile {
-    border: 1px solid black;
-}
-
-#update {
-    border:1px solid black;
-}
-
-form {
-    text-align: center;
-    width: 200px;
-    background-color: beige;
-    float: center;
-    height: 500px;
-    
 }
 
 #dog-form {
-    width: 200px;
-    height: auto;
-    height: 556px;
-    background-image: url("sandpaw.jpeg");
-    background-repeat: no-repeat;
-    background-position-y: 210px;
+    background-color: beige;
+    width: 290px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: auto;
 }
 
-p {
-    background-color: lightcyan;
-    margin: 10px;
-    padding:0;
-    text-align: right;
-    font-size: 14px;
-    text-wrap: normal;
+fieldset {
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 5px;
+    text-align: center;
 }
 
-div {
-    border: 1px solid black;
-    font-size: 20px;
-    font-weight: bolder;
-    text-wrap: normal;
+fieldset:first-child {
+    padding: 50px;
 
+}
+
+footer {
+    background-color: #B9B9FF;
 }

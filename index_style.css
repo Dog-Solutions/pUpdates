@@ -1,15 +1,24 @@
 body {
-    border: 1px solid black;
+    background-color: #B9B9FF;
+    background-image: url("images/background-photo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: 130px;
 }
 
-#profile {
-    border: 1px solid black;
+header {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    background: beige;
+    border-radius: 5px;
+    max-height: 100px;
+
 }
 
 #update {
-    border:1px solid black;
     display: flex;
     justify-content: flex-start;
+    background: #B9B9FF;
 }
 
 form {
@@ -45,10 +54,6 @@ p {
     text-align: left;
     font-size: 14px;
     word-wrap: break-word;
-}
-
-div {
-    font-size: 20px;
     font-weight: bolder;
 }
 
@@ -57,20 +62,37 @@ img {
 }
 
 .post-div {
+    margin-left: 120px;
+    margin-right: auto;
     background-color: #8484BD;
     border: 2px solid navy;
     border-radius: 10px;
     margin: 20px;
     width: 75%;
     padding: 0px 15px 15px 15px;
+
 }
     
 #add-new-user {
     width: 30%;
-    
+    height: auto;
 }
 
 #form-update {
     width: 70%;
 }
 
+ul {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+li {
+    list-style: none;
+}
+
+#feed-holder {
+    margin-left: auto;
+    margin-right: auto;
+}
