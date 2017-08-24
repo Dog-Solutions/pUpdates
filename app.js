@@ -81,6 +81,7 @@ if ( !savedData ) {             // looks for LS data
 
         var picCont = document.createElement ( 'img' );
         picCont.setAttribute ("src", this.pic);
+        //var profileCont = document.getElementById('profile')
         console.log(picCont);
         dogList.appendChild( picCont );
     }
