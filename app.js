@@ -77,23 +77,23 @@ this.renderToDOM();
 
 Dog.prototype.renderToDOM = function () {
     var infoCont = document.createElement( 'li' );
-    infoCont.innerText = this.name;
+    infoCont.innerText = ("Name : " + this.name);
     dogList.appendChild ( infoCont );
 
     var breedCont = document.createElement ( 'li' );
-    breedCont.innerText = this.breed;
+    breedCont.innerText = ("Breed : " + this.breed);
     dogList.appendChild ( breedCont );
 
     var weightCont = document.createElement ( 'li' );
-    weightCont.innerText = this.weight;
+    weightCont.innerText = ("Weight : " + this.weight);
     dogList.appendChild ( weightCont );
 
     var ownerCont = document.createElement ( 'li' );
-    ownerCont.innerText = this.owner[0];
+    ownerCont.innerText = ("Owner: " + this.owner[0]);
     dogList.appendChild ( ownerCont );
 
     var displayDogName = document.getElementById("dog-name-display");
-    displayDogName.innerText = this.name;
+    displayDogName.innerText = (this.name + "'s Profile");
 
 
     for ( var i = 0; i < this.owner.length; i++ ) {
@@ -211,5 +211,5 @@ function postToDOM() {
     var dateDisplay = document.createElement( 'p' );
     dateDisplay.innerText = dateTime;
     postBox.appendChild( dateDisplay);
-    
+
 }
