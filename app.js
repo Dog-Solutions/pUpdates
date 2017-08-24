@@ -3,6 +3,7 @@
 var dogName;
 var dogBreed;
 var dogWeight;
+var dogPic;
 var dogOwner = [];
 var submitNewUser = document.getElementById ( 'add-new-user' );
 var userSelector = document.getElementById ( 'caretakers' );
@@ -44,6 +45,10 @@ if ( !savedData ) {             // looks for LS data
         dogOwner.push (this.owner.value);
         var dogOwnerString = JSON.stringify ( dogOwner );
         localStorage.setItem ( 'owner', dogOwnerString );
+
+        dogPic = this.pic.value;
+        var dogPicString = JSON.stringify ( dogPic );
+        localStorage.setItem ( 'pic', dogPicString);
     }
 
         
@@ -55,13 +60,15 @@ if ( !savedData ) {             // looks for LS data
     var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
     var localWeight = JSON.parse ( localStorage.getItem ( 'weight' ));
     var localOwner = JSON.parse ( localStorage.getItem ( 'owner' ));
+    var localPic = JSON.parse (localStorage.getItem ( 'pic' ));
 
                 //creates dog constructor 
-    function Dog (name, breed, weight, owner) {
+    function Dog (name, breed, weight, owner, pic) {
         this.name = name;
         this.breed = breed;
         this.weight = weight;
         this.owner = owner;
+        this.pic = pic;
         this.renderToDOM();
     }
                 // TODO ------- make a loop
@@ -83,13 +90,21 @@ if ( !savedData ) {             // looks for LS data
         ownerCont.innerText = this.owner[0];
         dogList.appendChild ( ownerCont );
 
+        var picCont = document.createElement ( 'img' );
+        picCont.setAttribute ("src", this.pic);
+        picCont.setAttribute ("style", "height:8em")
+        picCont.setAttribute ("id", "profile-pic")
+        var profileCont = document.getElementById('profile')
+        console.log(picCont);
+        profileCont.appendChild( picCont );
+
         for ( var i = 0; i < this.owner.length; i++ ) {
             var careTaker = document.createElement ( 'option' );
             careTaker.innerText = this.owner[i];
             userSelector.appendChild ( careTaker );
         }
     }
-    var mainDog = new Dog ( localName, localBreed, localWeight, localOwner );
+    var mainDog = new Dog ( localName, localBreed, localWeight, localOwner, localPic );
 }
 
                     // POST CONSTRUCTOR
