@@ -135,7 +135,7 @@ function postToDOM() {
     //postBox.setAttribute("id", 'genericID');
     feedBoard.appendChild( postBox );
     var postItem = document.createElement ('p');
-    postBox.setAttribute( 'class', 'post-div')
+    postBox.setAttribute( 'class', 'post-div') //what is this for?
 
     var signature = document.createElement ( 'p' );
     signature.innerText = postHolder[i].nowUser;
@@ -172,6 +172,7 @@ function postToDOM() {
     postItem.innerText = postHolder[i].text;
     postItem.setAttribute ( 'id', 'text-input');
     postBox.appendChild(postItem);
+
     var dateTime = postHolder[i].date;
     var dateDisplay = document.createElement( 'p' );
     dateDisplay.innerText = dateTime;
