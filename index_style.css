@@ -111,9 +111,15 @@ fieldset {
 }
 
 .post-div:hover {
-        transform: scale(1.03);
-        -webkit-transform: scale(1.03);
-        -ms-transform: scale(1.03);
+    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    /* box-shadow:
+    1px 1px #53a7ea,
+    2px 2px #53a7ea,
+    3px 3px #53a7ea; */
+    box-shadow: 0px 25px 10px rgba(0, 0, 0, 0.5);
+    
 }
 
 #update {
