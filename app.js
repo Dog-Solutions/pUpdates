@@ -3,6 +3,7 @@
 var dogName;
 var dogBreed;
 var dogWeight;
+var dogPic;
 var dogOwner = [];
 var submitNewUser = document.getElementById ( 'add-new-user' );
 var userSelector = document.getElementById ( 'caretakers' );
@@ -44,6 +45,10 @@ if ( !savedData ) {             // looks for LS data
         dogOwner.push (this.owner.value);
         var dogOwnerString = JSON.stringify ( dogOwner );
         localStorage.setItem ( 'owner', dogOwnerString );
+
+        dogPic = this.pic.value;
+        var dogPicString = JSON.stringify ( dogPic );
+        localStorage.setItem ( 'pic', dogPicString);
     }
 
         
@@ -55,13 +60,15 @@ if ( !savedData ) {             // looks for LS data
     var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
     var localWeight = JSON.parse ( localStorage.getItem ( 'weight' ));
     var localOwner = JSON.parse ( localStorage.getItem ( 'owner' ));
+    var localPic = JSON.parse (localStorage.getItem ( 'pic' ));
 
                 //creates dog constructor 
-    function Dog (name, breed, weight, owner) {
+    function Dog (name, breed, weight, owner, pic) {
         this.name = name;
         this.breed = breed;
         this.weight = weight;
         this.owner = owner;
+        this.pic = pic;
         this.renderToDOM();
     }
                 // TODO ------- make a loop
@@ -83,13 +90,33 @@ if ( !savedData ) {             // looks for LS data
         ownerCont.innerText = this.owner[0];
         dogList.appendChild ( ownerCont );
 
+
         for ( var i = 0; i < this.owner.length; i++ ) {
             var careTaker = document.createElement ( 'option' );
             careTaker.innerText = this.owner[i];
             userSelector.appendChild ( careTaker );
         }
     }
-    var mainDog = new Dog ( localName, localBreed, localWeight, localOwner );
+    var mainDog = new Dog ( localName, localBreed, localWeight, localOwner, localPic );
+
+    if ( mainDog.pic ) {
+        var picCont = document.createElement ( 'img' );
+        picCont.setAttribute ("src", mainDog.pic);
+        picCont.setAttribute ("style", "height:8em")
+        picCont.setAttribute ("id", "profile-pic")
+        var profileCont = document.getElementById('profile')
+        profileCont.appendChild( picCont );
+
+    }
+
+    else {
+        var picCont = document.createElement ( 'img' );
+        picCont.setAttribute ("src", "images/dachsund.jpg");
+        picCont.setAttribute ("style", "height:8em")
+        picCont.setAttribute ("id", "profile-pic")
+        var profileCont = document.getElementById('profile')
+        profileCont.appendChild( picCont );
+    }
 }
 
                     // POST CONSTRUCTOR
@@ -135,7 +162,7 @@ function postToDOM() {
     //postBox.setAttribute("id", 'genericID');
     feedBoard.appendChild( postBox );
     var postItem = document.createElement ('p');
-    postBox.setAttribute( 'class', 'post-div')
+    postBox.setAttribute( 'class', 'post-div') //what is this for?
 
     var signature = document.createElement ( 'p' );
     signature.innerText = postHolder[i].nowUser;
@@ -172,6 +199,7 @@ function postToDOM() {
     postItem.innerText = postHolder[i].text;
     postItem.setAttribute ( 'id', 'text-input');
     postBox.appendChild(postItem);
+
     var dateTime = postHolder[i].date;
     var dateDisplay = document.createElement( 'p' );
     dateDisplay.innerText = dateTime;
