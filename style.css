@@ -38,6 +38,13 @@ fieldset:first-child {
 
 }
 
-footer {
+#foot {
     background-color: #B9B9FF;
+    text-align: center;
+    margin: 2em auto;
+    width: 100px;
+}
+
+#pic {
+    margin-left: 29px;
 }

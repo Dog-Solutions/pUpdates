@@ -54,53 +54,53 @@ if ( !savedData ) {             // looks for LS data
     } 
     
 else {                //parses existing LS data
-submitNewUser.addEventListener ( 'submit', submitUser );
-updateForm.addEventListener ( 'submit', submitPost );
+    submitNewUser.addEventListener ( 'submit', submitUser );
+    updateForm.addEventListener ( 'submit', submitPost );
 
-var localName = JSON.parse ( localStorage.getItem ( 'name' ));
-var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
-var localWeight = JSON.parse ( localStorage.getItem ( 'weight' ));
-var localOwner = JSON.parse ( localStorage.getItem ( 'owner' ));
-var localPic = JSON.parse (localStorage.getItem ( 'pic' ));
+    var localName = JSON.parse ( localStorage.getItem ( 'name' ));
+    var localBreed = JSON.parse ( localStorage.getItem ( 'breed' ));
+    var localWeight = JSON.parse ( localStorage.getItem ( 'weight' ));
+    var localOwner = JSON.parse ( localStorage.getItem ( 'owner' ));
+    var localPic = JSON.parse (localStorage.getItem ( 'pic' ));
 
-        //creates dog constructor 
-function Dog (name, breed, weight, owner, pic) {
-    this.name = name;
-    this.breed = breed;
-    this.weight = weight;
-    this.owner = owner;
-    this.pic = pic;
-    this.renderToDOM();
+            //creates dog constructor 
+        function Dog (name, breed, weight, owner, pic) {
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+            this.owner = owner;
+            this.pic = pic;
+            this.renderToDOM();
 
-}
+        }
         // TODO ------- make a loop
 
-Dog.prototype.renderToDOM = function () {
-    var infoCont = document.createElement( 'li' );
-    infoCont.innerText = ("Name : " + this.name);
-    dogList.appendChild ( infoCont );
+    Dog.prototype.renderToDOM = function () {
+        var infoCont = document.createElement( 'li' );
+        infoCont.innerText = ("Name : " + this.name);
+        dogList.appendChild ( infoCont );
 
-    var breedCont = document.createElement ( 'li' );
-    breedCont.innerText = ("Breed : " + this.breed);
-    dogList.appendChild ( breedCont );
+        var breedCont = document.createElement ( 'li' );
+        breedCont.innerText = ("Breed : " + this.breed);
+        dogList.appendChild ( breedCont );
 
-    var weightCont = document.createElement ( 'li' );
-    weightCont.innerText = ("Weight : " + this.weight);
-    dogList.appendChild ( weightCont );
+        var weightCont = document.createElement ( 'li' );
+        weightCont.innerText = ("Weight : " + this.weight);
+        dogList.appendChild ( weightCont );
 
-    var ownerCont = document.createElement ( 'li' );
-    ownerCont.innerText = ("Owner: " + this.owner[0]);
-    dogList.appendChild ( ownerCont );
+        var ownerCont = document.createElement ( 'li' );
+        ownerCont.innerText = ("Owner: " + this.owner[0]);
+        dogList.appendChild ( ownerCont );
 
-    var displayDogName = document.getElementById("dog-name-display");
-    displayDogName.innerText = (this.name + "'s Profile");
+        var displayDogName = document.getElementById("dog-name-display");
+        displayDogName.innerText = (this.name + "'s Profile");
 
 
-    for ( var i = 0; i < this.owner.length; i++ ) {
-        var careTaker = document.createElement ( 'option' );
-        careTaker.innerText = this.owner[i];
-        userSelector.appendChild ( careTaker );
-    }
+        for ( var i = 0; i < this.owner.length; i++ ) {
+            var careTaker = document.createElement ( 'option' );
+            careTaker.innerText = this.owner[i];
+            userSelector.appendChild ( careTaker );
+        }
 }
 
     var mainDog = new Dog ( localName, localBreed, localWeight, localOwner, localPic );

@@ -1,0 +1,35 @@
+body {
+    background-color: #B9B9FF;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 32px;
+}
+
+h1 {
+text-align: center;
+font-family: 'Permanent Marker', cursive;
+}
+
+section {
+    border: 1px black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#dog-pic {
+    border-radius: 180px;
+    margin: 0px 0px 0px 25px;
+    text-align: center;
+
+}
+
+#dat-div {
+    text-align: center;
+}
+
+#home-link {
+    text-align: center;
+    margin: 2em auto;
+    width: 100px;
+}
