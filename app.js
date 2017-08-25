@@ -65,12 +65,12 @@ var localPic = JSON.parse (localStorage.getItem ( 'pic' ));
 
         //creates dog constructor 
 function Dog (name, breed, weight, owner, pic) {
-this.name = name;
-this.breed = breed;
-this.weight = weight;
-this.owner = owner;
-this.pic = pic;
-this.renderToDOM();
+    this.name = name;
+    this.breed = breed;
+    this.weight = weight;
+    this.owner = owner;
+    this.pic = pic;
+    this.renderToDOM();
 
 }
         // TODO ------- make a loop
